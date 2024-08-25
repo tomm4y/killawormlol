@@ -1,0 +1,196 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/Structure.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/Sand Tile.png" type="Texture" id=3]
+[ext_resource path="res://World/DirtPathTileMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/DirtCliffTileMap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/Slime.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/tree.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/stonesideways.tscn" type="PackedScene" id=9]
+[ext_resource path="res://World/stone.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Player/CanvasLayer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://room2_enter.gd" type="Script" id=12]
+[ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=13]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 17.7748
+height = 28.0
+
+[node name="World" type="Node2D"]
+__meta__ = {
+"_edit_vertical_guides_": [ -48.0 ]
+}
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 170, 87 )
+scale = Vector2( 1.5858, 1.02222 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( -61, -9, 507, 446 )
+
+[node name="DirtPathTileMap" parent="." instance=ExtResource( 4 )]
+
+[node name="DirtCliffTileMap" parent="." instance=ExtResource( 5 )]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 136, 80 )
+current = true
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 136, 80 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+remote_path = NodePath("../../../Camera2D")
+
+[node name="HealthUI" parent="YSort/Player" instance=ExtResource( 13 )]
+
+[node name="Structures" type="YSort" parent="YSort"]
+
+[node name="Structure" parent="YSort/Structures" instance=ExtResource( 2 )]
+position = Vector2( 264, 86 )
+rotation = 0.10472
+
+[node name="stonesideways" parent="YSort/Structures" instance=ExtResource( 9 )]
+position = Vector2( 192.002, 13.7359 )
+rotation = 0.359538
+scale = Vector2( 0.799066, 0.728571 )
+
+[node name="stonesideways4" parent="YSort/Structures" instance=ExtResource( 9 )]
+position = Vector2( 221.193, 112.78 )
+rotation = 0.359538
+scale = Vector2( 0.799066, 0.728571 )
+
+[node name="stonesideways5" parent="YSort/Structures" instance=ExtResource( 9 )]
+position = Vector2( 224, 256 )
+rotation = -0.499164
+scale = Vector2( 0.799066, 0.728571 )
+
+[node name="stonesideways2" parent="YSort/Structures" instance=ExtResource( 9 )]
+position = Vector2( -64, 16 )
+scale = Vector2( 0.574766, 0.614286 )
+
+[node name="stonesideways3" parent="YSort/Structures" instance=ExtResource( 9 )]
+position = Vector2( -64, 48 )
+scale = Vector2( 0.574766, 0.614286 )
+
+[node name="tree" parent="YSort/Structures" instance=ExtResource( 8 )]
+position = Vector2( 320, -72 )
+rotation = -0.120428
+scale = Vector2( 0.63913, 0.459799 )
+
+[node name="tree12" parent="YSort/Structures" instance=ExtResource( 8 )]
+position = Vector2( 32, -72 )
+rotation = -0.120428
+scale = Vector2( 0.63913, 0.459799 )
+
+[node name="tree2" parent="YSort/Structures" instance=ExtResource( 8 )]
+position = Vector2( 400, 136 )
+rotation = -0.120428
+scale = Vector2( 0.63913, 0.459799 )
+
+[node name="tree3" parent="YSort/Structures" instance=ExtResource( 8 )]
+position = Vector2( 269.692, -0.295319 )
+rotation = -0.120428
+scale = Vector2( 0.573754, 0.52103 )
+
+[node name="tree4" parent="YSort/Structures" instance=ExtResource( 8 )]
+position = Vector2( 32, 240 )
+rotation = -0.120428
+scale = Vector2( 0.63913, 0.459799 )
+
+[node name="tree5" parent="YSort/Structures" instance=ExtResource( 8 )]
+position = Vector2( 272, -80 )
+rotation = -0.120428
+scale = Vector2( 0.63913, 0.459799 )
+
+[node name="tree6" parent="YSort/Structures" instance=ExtResource( 8 )]
+position = Vector2( 16.4265, 108.098 )
+rotation = -0.120428
+scale = Vector2( 0.63913, 0.459799 )
+
+[node name="tree7" parent="YSort/Structures" instance=ExtResource( 8 )]
+position = Vector2( 77.3453, -23.7652 )
+rotation = -0.120428
+scale = Vector2( 0.63913, 0.459799 )
+
+[node name="tree8" parent="YSort/Structures" instance=ExtResource( 8 )]
+position = Vector2( 384, 96 )
+rotation = -0.120428
+scale = Vector2( 0.63913, 0.459799 )
+
+[node name="tree9" parent="YSort/Structures" instance=ExtResource( 8 )]
+position = Vector2( -80, 192 )
+rotation = -0.120428
+scale = Vector2( 0.63913, 0.459799 )
+
+[node name="tree11" parent="YSort/Structures" instance=ExtResource( 8 )]
+position = Vector2( 120, -88 )
+rotation = -0.120428
+scale = Vector2( 0.63913, 0.459799 )
+
+[node name="tree10" parent="YSort/Structures" instance=ExtResource( 8 )]
+position = Vector2( 352, 176 )
+rotation = -0.120428
+scale = Vector2( 0.63913, 0.459799 )
+
+[node name="stone" parent="YSort/Structures" instance=ExtResource( 10 )]
+position = Vector2( -40, -56 )
+scale = Vector2( 0.7, 0.584211 )
+
+[node name="stone2" parent="YSort/Structures" instance=ExtResource( 10 )]
+position = Vector2( 29.4642, 65.6006 )
+scale = Vector2( 0.7, 0.584211 )
+
+[node name="stone3" parent="YSort/Structures" instance=ExtResource( 10 )]
+position = Vector2( 172.372, -28.0216 )
+scale = Vector2( 0.7, 0.584211 )
+
+[node name="stone5" parent="YSort/Structures" instance=ExtResource( 10 )]
+position = Vector2( 300.255, 60.2618 )
+rotation = 0.0401426
+scale = Vector2( 0.7, 0.584211 )
+
+[node name="stone6" parent="YSort/Structures" instance=ExtResource( 10 )]
+position = Vector2( 300.979, 84.4824 )
+scale = Vector2( 0.7, 0.584211 )
+
+[node name="stone7" parent="YSort/Structures" instance=ExtResource( 10 )]
+position = Vector2( 299.749, 104.228 )
+scale = Vector2( 0.7, 0.584211 )
+
+[node name="stone4" parent="YSort/Structures" instance=ExtResource( 10 )]
+position = Vector2( 53.697, 168.39 )
+scale = Vector2( 0.7, 0.584211 )
+
+[node name="enemies" type="Node" parent="YSort"]
+
+[node name="Slime" parent="YSort/enemies" groups=[
+"enemies",
+] instance=ExtResource( 7 )]
+position = Vector2( 210.485, 73.8421 )
+
+[node name="Slime2" parent="YSort/enemies" groups=[
+"enemies",
+] instance=ExtResource( 7 )]
+position = Vector2( 152.619, 36.4261 )
+
+[node name="Slime3" parent="YSort/enemies" groups=[
+"enemies",
+] instance=ExtResource( 7 )]
+position = Vector2( 177.94, 139.841 )
+
+[node name="room2_enter" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="room2_enter"]
+position = Vector2( 263, 102 )
+rotation = -1.55683
+shape = SubResource( 1 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 11 )]
+[connection signal="body_entered" from="room2_enter" to="room2_enter" method="_on_room2_enter_body_entered"]

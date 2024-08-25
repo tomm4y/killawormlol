@@ -1,0 +1,111 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Enemies/SlimeA.png" type="Texture" id=1]
+[ext_resource path="res://Overlap/Hurtbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/Slime.gd" type="Script" id=3]
+[ext_resource path="res://Stats.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=6]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "slimer",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 4.0
+
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 7.0
+height = 4.0
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 48.0
+
+[sub_resource type="CircleShape2D" id=14]
+radius = 6.0
+
+[node name="Slime" type="KinematicBody2D"]
+collision_layer = 16
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 10 )
+animation = "slimer"
+frame = 7
+playing = true
+offset = Vector2( 0, -12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 11 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 2 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, -13 )
+shape = SubResource( 12 )
+
+[node name="Stats" parent="." instance=ExtResource( 4 )]
+max_health = 3
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 5 )]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+modulate = Color( 0.0509804, 0.976471, 0.0196078, 0.317647 )
+position = Vector2( 0, -12 )
+shape = SubResource( 13 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 6 )]
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, -10 )
+shape = SubResource( 14 )
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
+
+[editable path="Hurtbox"]
+
+[editable path="PlayerDetectionZone"]
+
+[editable path="Hitbox"]

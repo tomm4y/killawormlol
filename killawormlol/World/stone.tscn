@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://World/Atlas-Props.png" type="Texture" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 17.9494
+height = 33.5039
+
+[node name="stone" type="StaticBody2D"]
+
+[node name="stone" type="Sprite" parent="."]
+position = Vector2( 0.236671, 0 )
+scale = Vector2( 1.00592, 1 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 248, 101, 77, 95 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1.5778, 24.1402 )
+rotation = 1.5708
+shape = SubResource( 1 )

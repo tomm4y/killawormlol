@@ -1,8 +1,7 @@
 # killawormlol
 Game for CS class 
 
-Following the tutorial from Heartbeast Action RPG tutorial along with adding a boss, scuffed 
-and not complete :)
+Following the tutorial from Heartbeast Action RPG tutorial along with adding a boss, super scuffed
 ------------------------------------------------------------------------------------------
 Contributions: Character movement, creating 1st screen with objects and 
 hitboxes + collision boxes.
@@ -23,7 +22,7 @@ https://github.com/uheartbeast/youtube-tutorials/raw/master/Action%20RPG/Action%
 
 How to run program + see game: 
 
-1. Located inside the "executable" folder is the "projecto.exe" file which can be ran
+1. Located inside the "executable" folder is the "projecto.exe" file which can be ran (only Windows)
 
 Controls are WASD for movement and spacebar for rolling and left mouse click for attacking.
 
